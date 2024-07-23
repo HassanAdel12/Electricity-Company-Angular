@@ -1,0 +1,42 @@
+<body style="background-image: url('assets/images/login2.jpeg');">
+    <div class="container">
+        <h1>Login</h1>
+
+        <br>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+            <div class="inputbox">
+
+                <input type="text" formControlName="email" placeholder="Email">
+
+                <div *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched"
+                    class="form-text text-center text-danger">
+                    Email is required and must be Email Address
+                </div>
+            </div>
+
+
+            <br>
+
+
+
+            <div class="inputbox">
+
+                <input type="password" formControlName="password" placeholder="Password">
+
+                <div *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched"
+                    class="form-text text-center text-danger">Password is required and must between 6 and 20 chars</div>
+            </div>
+
+            <br>
+
+            <div *ngIf="errormessage" class="form-text text-center text-danger">{{errormessage}}</div>
+
+            <button id="redirectButton" class="button" type="submit" style="background-color:rgb(20, 202, 239);">Login</button>
+
+            <span id="span"></span>
+        </form>
+    </div>
+    <span @if(show) class="loader"></span>
+</body>

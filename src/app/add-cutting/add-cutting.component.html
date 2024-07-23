@@ -1,0 +1,58 @@
+<div class="container" id="container">
+    <div id="header">
+        <h1>ADD Cutting</h1>
+    </div>
+    <div id="body" class=" mt-4">
+        <form [formGroup]="myform" (ngSubmit)="submit()" class="needs-validation" novalidate>
+
+
+            <label for="selectedCutting" class="form-label">Choose Cutting</label>
+            <select class="form-control" formControlName="selectedCutting" id="selectedCutting" required>
+                
+                <option value="A">Cutting Down A</option>
+                <option value="B">Cutting Down B</option>
+
+            </select>
+            <div *ngIf="myform.get('selectedCutting')?.errors && myform.get('selectedCutting')?.touched"
+                class="form-text text-center text-danger">Please Choose problem Type </div>
+
+
+
+
+            <div class="mb-3">
+                <label for="cutting_Down_Name" class="form-label">Cutting Down Name</label>
+                <input type="text" class="form-control" name="cutting_Down_Name"
+                    formControlName="cutting_Down_Name" id="cutting_Down_Name"
+                    placeholder="Cutting Down Name" required>
+                <div *ngIf="myform.get('cutting_Down_Name')?.errors && myform.get('cutting_Down_Name')?.touched"
+                    class="form-text text-center text-danger">Cutting Down Name is required </div>
+            </div>
+
+
+            <label for="problem_Type_Key" class="form-label">Choose problem Type</label>
+            <select class="form-control" formControlName="problem_Type_Key" id="problem_Type_Key" required>
+                @for (problemType of problemTypes; track problemType) {
+                    <option [value]="problemType.problem_Type_Key">{{problemType.problem_Type_Name }}</option>
+                }
+                
+            </select>
+            <div *ngIf="myform.get('problem_Type_Key')?.errors && myform.get('problem_Type_Key')?.touched"
+                class="form-text text-center text-danger">Please Choose problem Type </div>
+
+
+
+
+
+            <div class="mb-3">
+                <label class="form-label">Create Date</label>
+                <input type="date" class="form-control" name="createDate" formControlName="createDate" />
+
+                <div *ngIf="myform.get('createDate')?.errors && myform.get('createDate')?.touched"
+                     class="form-text text-center text-danger">Create Date is required</div>
+            </div>
+
+
+            <button type="submit" class="btn btn-danger  " [disabled]="!myform.valid"> Submit</button>
+
+        </form>
+    </div>

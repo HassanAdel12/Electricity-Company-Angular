@@ -1,0 +1,55 @@
+
+<br>
+<button class="btn btn-info" (click)="Add()">Add Cutting</button>
+<br>
+<br>
+<table class="table table-striped table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th>cutting Down A Incident ID</th>
+        <th>cutting Down B Incident ID</th>
+        <th>cutting Down Cabin Name</th>
+        <th>cutting Down Cable Name</th>
+        <th>create Date</th>
+        <th>end Date</th>
+        <th>is Active</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+        @for (cuttingA of cuttingsA; track cuttingA.cutting_Down_A_Incident_ID){
+      <tr>
+        <td>{{ cuttingA.cutting_Down_A_Incident_ID }}</td>
+        <td>{{ cuttingA.cutting_Down_B_Incident_ID }}</td>
+        <td>{{ cuttingA.cutting_Down_Cabin_Name }}</td>
+        <td>{{ cuttingA.cutting_Down_Cable_Name }}</td>
+        <td>{{ cuttingA.createDate }}</td>
+        <td>{{ cuttingA.endDate }}</td>
+        <td>{{ cuttingA.isActive }}</td>
+      
+        <td>
+            <button class="btn btn-info" (click)="close(cuttingA.cutting_Down_A_Incident_ID,'A')">Close</button>
+            <button class="btn btn-danger" (click)="delete(cuttingA.cutting_Down_A_Incident_ID,'A')">Delete</button>
+        </td>
+      </tr> 
+    }
+
+
+      @for (cuttingB of cuttingsB; track cuttingB.cutting_Down_B_Incident_ID){
+        <tr>
+          <td>{{ cuttingB.cutting_Down_A_Incident_ID }}</td>
+          <td>{{ cuttingB.cutting_Down_B_Incident_ID }}</td>
+          <td>{{ cuttingB.cutting_Down_Cabin_Name }}</td>
+          <td>{{ cuttingB.cutting_Down_Cable_Name }}</td>
+          <td>{{ cuttingB.createDate }}</td>
+          <td>{{ cuttingB.endDate }}</td>
+          <td>{{ cuttingB.isActive }}</td>
+        
+          <td>
+              <button class="btn btn-info" (click)="close(cuttingB.cutting_Down_B_Incident_ID,'B')">Close</button>
+              <button class="btn btn-danger" (click)="delete(cuttingB.cutting_Down_B_Incident_ID,'B')">Delete</button>
+          </td>
+        </tr> 
+    }
+    </tbody>
+  </table>
